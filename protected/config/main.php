@@ -9,7 +9,10 @@ return array(
     'name' => 'My Web Application',
     'theme' => 'mytheme',
     // preloading 'log' component
-    'preload' => array('log', 'booster'),
+    'preload' => array(
+        'log', 
+        'booster'
+        ),
     // autoloading model and component classes
     'import' => array(
         'application.models.*',
