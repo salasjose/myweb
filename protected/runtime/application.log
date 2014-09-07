@@ -37,3 +37,27 @@ Stack trace:
 #22 {main}
 REQUEST_URI=/myweb/index.php
 ---
+2014/09/07 11:58:58 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Unable to resolve the request "rpt/rpt1".' in C:\xampp\htdocs\framework\web\CWebApplication.php:286
+Stack trace:
+#0 C:\xampp\htdocs\framework\web\CWebApplication.php(141): CWebApplication->runController('rpt/rpt1')
+#1 C:\xampp\htdocs\framework\base\CApplication.php(180): CWebApplication->processRequest()
+#2 C:\xampp\htdocs\myweb\index.php(13): CApplication->run()
+#3 {main}
+REQUEST_URI=/myweb/index.php?r=rpt/rpt1
+---
+2014/09/07 11:59:32 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Unable to resolve the request "rpt/rpt1".' in C:\xampp\htdocs\framework\web\CWebApplication.php:286
+Stack trace:
+#0 C:\xampp\htdocs\framework\web\CWebApplication.php(141): CWebApplication->runController('rpt/rpt1')
+#1 C:\xampp\htdocs\framework\base\CApplication.php(180): CWebApplication->processRequest()
+#2 C:\xampp\htdocs\myweb\index.php(13): CApplication->run()
+#3 {main}
+REQUEST_URI=/myweb/index.php?r=rpt/rpt1
+---
+2014/09/07 12:00:44 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Unable to resolve the request "rpt/rpt1".' in C:\xampp\htdocs\framework\web\CWebApplication.php:286
+Stack trace:
+#0 C:\xampp\htdocs\framework\web\CWebApplication.php(141): CWebApplication->runController('rpt/rpt1')
+#1 C:\xampp\htdocs\framework\base\CApplication.php(180): CWebApplication->processRequest()
+#2 C:\xampp\htdocs\myweb\index.php(13): CApplication->run()
+#3 {main}
+REQUEST_URI=/myweb/index.php?r=rpt/rpt1
+---
