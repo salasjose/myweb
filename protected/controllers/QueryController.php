@@ -7,7 +7,7 @@ class QueryController  extends Controller{
                 from person p LEFT JOIN chospital h on p.HOSPCODE = h.hoscode
                 GROUP BY p.HOSPCODE ";
         
-        $rawData = Yii::app()->db->createCommand($sql)->queryAll();
+        $rawData = Yii::app()->db->createCommand($sql)->queryAll();       
         
         $dataProvider = new CArrayDataProvider($rawData,array(
            'keyField' => 'HOSPCODE',
