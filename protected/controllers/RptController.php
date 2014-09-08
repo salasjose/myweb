@@ -11,6 +11,7 @@ GROUP BY p.HOSPCODE";
         $rawData = Yii::app()->db->createCommand($sql)->queryAll();
         
         $dataProvider = new CArrayDataProvider($rawData,array(
+             'keyField' => 'HOSPCODE', // ใส่ชื่อฟิลด์(ที่ได้จากผลการคิวรี ที่สามารถ PK ได้)
             'totalItemCount'=>  count($rawData),
             'sort'=>array(
                 'attributes'=>  array_keys($rawData[0])
