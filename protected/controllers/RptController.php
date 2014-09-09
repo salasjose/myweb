@@ -24,16 +24,16 @@ class RptController extends Controller {
     
     public function actionRpt2(){
         
-        $filtesForm = new FiltersForm;
+        $filtersForm = new FiltersForm;
         if(isset($_GET['FiltersForm']))
-            $filtesForm->filters = $_GET['FiltersForm'];
+            $filtersForm->filters = $_GET['FiltersForm'];
         
          $sql = "SELECT p.HOSPCODE ,h.hosname, count(DISTINCT p.CID) as total 
                 from person p LEFT JOIN chospital h on p.HOSPCODE = h.hoscode
                 GROUP BY p.HOSPCODE";
 
         $rawData = Yii::app()->db->createCommand($sql)->queryAll();
-        $filtersData = $filtesForm->filter($rawData);
+        $filtersData = $filtersForm->filter($rawData);
 
         $dataProvider = new CArrayDataProvider($filtersData, array(
             'keyField' => 'HOSPCODE', 
@@ -45,7 +45,7 @@ class RptController extends Controller {
         $this->render('rpt1', array(
             'sql' => $sql,
             'dataProvider' => $dataProvider,
-            'filtersForm'=>$filtesForm
+            'filtersForm'=>$filtersForm
         ));
         
     }
