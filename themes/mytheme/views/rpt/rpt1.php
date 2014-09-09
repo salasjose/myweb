@@ -1,7 +1,8 @@
 <?php
 
 $this->widget('zii.widgets.grid.CGridView',array(
-    'dataProvider'=>$dataProvider ,
+    'dataProvider'=>$dataProvider , 
+    'filter'=>$filtersForm,
     'columns'=>array(
         array(
             'name'=>'HOSPCODE',
