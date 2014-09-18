@@ -1,4 +1,8 @@
-
+<?php
+$dir = Yii::app()->theme->baseUrl;
+$cs = Yii::app()->getClientScript();
+$cs->registerScriptFile($dir . '/js/script.js');
+?>
 <div class="well">
     <form method="POST">
         <?php
@@ -25,73 +29,103 @@
         ?>
 
         <button type="submit" class="btn btn-success">ประมวลผล</button>
+        <button type="button" class="btn btn-default" onclick="return onBtn1_click();">ทดสอบ</button>
 
     </form>
 
+
 </div>
-
-
-<?php
-$this->widget('ext.booster.widgets.TbGridView', array(
-    'id' => 'datatable',
-    'dataProvider' => $dataProvider,
-    'filter' => $filtersForm,
-    'columns' => array(
-        array(
-            'name' => 'HOSPCODE',
-            'header' => 'รหัสสถานบริการ'
-        ),
-        array(
-            'name' => 'hosname',
-            'header' => 'สถานบริการ'
-        ),
-        array(
-            'name' => 'total',
-            'header' => 'จำนวนประชากร'
-        ),
-    )
-));
-?>
-
-<div class="well">
+<div id="div-show">
     <?php
-    $data = $dataProvider->getData();
-
-    $hosname = array();
-    $total = array();
-    foreach ($data as $d) {
-        array_push($hosname, $d['hosname']);
-        array_push($total, intval($d['total']));
-    }
-
-    $this->widget('ext.booster.widgets.TbHighCharts', array(
-        'options' => array(
-            'chart' => array(
-                'type' => 'column',
-                
-            ),            
-            'colors' => array('#4EBA0C'),
-            'title' => array('text' => 'แผนภูมิแท่งแสดงจำนวนประชากร'),
-            'yAxis' => array(
-                'title' => array('text' => 'จำนวน (คน)')
+    $this->widget('ext.booster.widgets.TbGridView', array(
+        'id' => 'datatable',
+        'dataProvider' => $dataProvider,
+        'filter' => $filtersForm,
+        'columns' => array(
+            array(
+                'name' => 'HOSPCODE',
+                'header' => 'รหัสสถานบริการ',
+                'htmlOptions' => array('style' => 'width: 500px; text-align: center;')
             ),
-            'xAxis' => array(
-                'categories' => $hosname
+            array(
+                'name' => 'hosname',
+                'header' => 'สถานบริการ',
+            //'filter' => $hosname
             ),
-            'series' => array(
-                array(
-                    'name' => 'ชื่อสถานบริการ',
-                    'data' => $total
-                )
-            )
+            array(
+                'name' => 'total',
+                'header' => 'จำนวนประชากร'
+            ),
         )
     ));
     ?>
 
+    <div class="well">
+
+        <?php
+        $data = $dataProvider->getData();
+        
+        $hosname = array();
+        $total = array();
+        foreach ($data as $d) {
+            $piedata[] = array($d['hosname'], intval($d['total']));
+            array_push($hosname, $d['hosname']);
+            array_push($total, intval($d['total']));
+        }
+        ?>
+        <?php
+        $this->widget('ext.booster.widgets.TbHighCharts', array(
+            'options' => array(
+                'chart' => array(
+                    'type' => 'column',
+                ),
+                'colors' => array('#4EBA0C'),
+                'title' => array('text' => 'แผนภูมิแท่งแสดงจำนวนประชากร'),
+                'yAxis' => array(
+                    'title' => array('text' => 'จำนวน (คน)')
+                ),
+                'xAxis' => array(
+                    'categories' => $hosname
+                ),
+                'series' => array(
+                    array(
+                        'name' => 'ชื่อสถานบริการ',
+                        'data' => $total
+                    )
+                )
+            )
+        ));
+        ?>
+
+
+    </div>
+    <pre>
+        <?php
+        print_r($piedata);
+        ?>
+    </pre>
+    <div class="well">
+        <h1>UTEHN PHNU</h1>
+        <?php
+//ควรประมวลผลข้อมูลที่ controller แล้วค่อยโยนมาให้ view
+
+
+        $this->widget('booster.widgets.TbHighCharts', array(
+            'options' => array(
+                'title' => array('text' => 'Power by Utehn PHNU.'),
+                'series' => array(array(
+                        'type' => 'pie',
+                        'name' => 'จำนวน',
+                        'data' => $piedata
+                    )),
+            )
+        ));
+        ?>
+    </div>
+
+
+    <?php
+    echo $sql;
+    ?>
 
 </div>
-
-
-<?php
-echo $sql;
-?>
