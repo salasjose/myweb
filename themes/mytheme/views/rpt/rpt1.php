@@ -64,13 +64,19 @@ $cs->registerScriptFile($dir . '/js/script.js');
 
         <?php
         $data = $dataProvider->getData();
-        
+        $piedata=array();
         $hosname = array();
         $total = array();
         foreach ($data as $d) {
-            $piedata[] = array($d['hosname'], intval($d['total']));
+            // การ add element ให้ array ทำได้ 2 รูปแบบ
+            array_push($piedata, array($d['hosname'], intval($d['total'])));
+            //$piedata[] = array($d['hosname'], intval($d['total']), 6);
+            
             array_push($hosname, $d['hosname']);
+            //$hosname[] = $d['hosname'];
+            
             array_push($total, intval($d['total']));
+            //$total[] = intval($d['total']);
         }
         ?>
         <?php
@@ -102,6 +108,8 @@ $cs->registerScriptFile($dir . '/js/script.js');
     <pre>
         <?php
         print_r($piedata);
+        echo "<hr>";
+        echo $piedata[0][2];
         ?>
     </pre>
     <div class="well">
