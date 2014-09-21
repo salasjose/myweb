@@ -16,7 +16,7 @@ class RptController extends Controller {
                 'attributes' => array_keys($rawData[0])
             )
         ));
-        $this->render('rpt1', array(
+        $this->render('rpt', array(
             'sql' => $sql,
             'dataProvider' => $dataProvider,
         ));
@@ -54,7 +54,7 @@ GROUP BY p.HOSPCODE";
         ));
         
        
-        $this->render('rpt1', array(
+        $this->render('rpt', array(
             'sql' => $sql,
             'dataProvider' => $dataProvider,
             'filtersForm' => $filtersForm,
