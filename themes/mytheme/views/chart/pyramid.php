@@ -9,6 +9,10 @@
     $agegroup = array('0-1ปี', '2-5ปี', '5-10ปี', '10ป๊+', 'aaa');
     $male = array(-40, -20, -10, -6, -8);
     $female = array(60, 20, 10, 6, 8);
+    $max_female =max($female);
+    $min_male = min($male);
+    $max_male = abs($min_male);
+    $max = $max_female>$max_male?$max_female:$max_male;
     //end data
 
     $this->widget('booster.widgets.TbHighCharts', array(
@@ -39,8 +43,8 @@
                 'title' => array(
                     'text' => 'จำนวน'
                 ),
-                'min' => -100,
-                'max' => 100
+                'min' => -1*($max)-10,
+                'max' => $max+10
             ),
             'series' => array(array(
                     'name' => 'เพศชาย',
