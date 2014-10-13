@@ -1,29 +1,43 @@
 <div class="well">
     <?php
-    $data = $dataProvider->getData();
-    $agegroup = array();
-    $male = array();
-    $female = array();
-    $total = array();
-   foreach ($data as $d) {       
-        array_push($male, intval($d['male'])*(-1));
-        array_push($female, intval($d['female']));
-        array_push($agegroup,abs( $d['agegroup']));
-    }
+    // import highchart libray
+    $cs = Yii::app()->getClientScript();
+    $cs->registerScriptFile('http://code.highcharts.com/highcharts.js');
+    $cs->registerScriptFile('http://code.highcharts.com/highcharts-more.js');
+    //end import
     
+    $agegroup = array('0-1ปี', '2-5ปี', '5-10ปี','10ป๊+');
+    $male = array(-40, -20, -10,-6);
+    $female = array(60, 20, 10,6);
+  
     $this->widget('booster.widgets.TbHighCharts', array(
         'options' => array(
-             'title' => array('text' => 'กราฟแสดงจำนวนประชากรในเขตรับผิดชอบตามกลุ่มอายุ'),
+            'title' => array('text' => 'กราฟแสดงจำนวนประชากรในเขตรับผิดชอบตามกลุ่มอายุ'),
             'chart' => array(
                 'type' => 'bar'
             ),
             'xAxis' => array(
-                categories => $agegroup
+                array(
+                    'categories' => $agegroup,
+                    'reversed' => false,
+                    'labels' => array('step' => 0)
+                ),
+                array(
+                    'opposite' => true,
+                    'reversed' => false,
+                    'categories' => $agegroup,
+                    'linkedTo' => 0,
+                    'labels' => array(
+                        'step' => 0
+                    )
+                )
             ),
             'yAxis' => array(
                 title => array(
                     text => 'จำนวน'
                 ),
+                min=>-100,
+                max=>100
             ),
             'series' => array(array(
                     name => 'เพศชาย',
@@ -32,50 +46,15 @@
                 array(
                     name => 'เพศหญิง',
                     data => $female
-                ), 
+                ),
+            ),
+            'plotOptions'=>array(
+                'series'=>array(
+                    stacking=> 'normal'
+                )
             )
         )
     ));
     ?>
 </div>
-
-<?php
-echo $male[0];
-$this->widget('zii.widgets.grid.CGridView', array(
-    'dataProvider' => $dataProvider,
-    'columns' => array(
-        array(
-            'name' => 'agegroup',
-            'header' => 'ช่องอายุ',
-            'htmlOptions' => array(
-                'align' => 'center',
-                 'width' => '35%',
-            )
-        ),
-        array(
-            'name' => 'male',
-            'header' => 'ผู้ชาย',
-            'htmlOptions' => array(
-                 'width' => '20%',
-                'align' => 'center'
-            )
-        ),
-        array(
-            'name' => 'female',
-            'header' => 'เพศหญิง',
-            'htmlOptions' => array(
-                 'width' => '20%',
-                'align' => 'center'
-            )
-        ),
-        array(
-            'name' => 'total',
-            'header' => 'ประชากรทั้งหมด',
-           'htmlOptions' => array(
-                'width' => '20%',
-                'align' => 'center')
-        ),
-    )
-));
-?>
 

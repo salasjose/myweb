@@ -6,5 +6,9 @@ class ChartController extends Controller{
         
     }
     
+    public function actionPie(){
+        $this->render('pie');
+    }
+    
     
 }
