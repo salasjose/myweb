@@ -12,8 +12,7 @@
     
     //คำนวณค่า max , min 
     $max_female =max($female);
-    $min_male = min($male);
-    $max_male = abs($min_male);
+    $max_male = abs(min($male));
     $max = $max_female>$max_male?$max_female:$max_male;
     //end data
 
