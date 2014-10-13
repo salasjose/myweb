@@ -9,6 +9,8 @@
     $agegroup = array('0-1ปี', '2-5ปี', '5-10ปี', '10ป๊+', 'aaa');
     $male = array(-40, -20, -10, -6, -8);
     $female = array(60, 20, 10, 6, 8);
+    
+    //คำนวณค่า max , min 
     $max_female =max($female);
     $min_male = min($male);
     $max_male = abs($min_male);
