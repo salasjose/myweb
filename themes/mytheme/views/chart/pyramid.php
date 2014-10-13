@@ -6,9 +6,11 @@
     $cs->registerScriptFile('http://code.highcharts.com/highcharts-more.js');
     //end import
     
+    // dynamic data template
     $agegroup = array('0-1ปี', '2-5ปี', '5-10ปี','10ป๊+');
     $male = array(-40, -20, -10,-6);
     $female = array(60, 20, 10,6);
+    //end data
   
     $this->widget('booster.widgets.TbHighCharts', array(
         'options' => array(
