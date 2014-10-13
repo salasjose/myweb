@@ -33,24 +33,24 @@
                 )
             ),
             'yAxis' => array(
-                title => array(
-                    text => 'จำนวน'
+                'title' => array(
+                    'text' => 'จำนวน'
                 ),
-                min=>-100,
-                max=>100
+                'min'=>-100,
+                'max'=>100
             ),
             'series' => array(array(
-                    name => 'เพศชาย',
-                    data => $male
+                    'name' => 'เพศชาย',
+                    'data' => $male
                 ),
                 array(
-                    name => 'เพศหญิง',
-                    data => $female
+                    'name' => 'เพศหญิง',
+                    'data' => $female
                 ),
             ),
             'plotOptions'=>array(
                 'series'=>array(
-                    stacking=> 'normal'
+                    'stacking'=> 'normal'
                 )
             )
         )
