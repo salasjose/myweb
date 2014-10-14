@@ -51,9 +51,9 @@ $this->widget('ext.booster.widgets.TbHighCharts', array(
                 'rotation' => 'auto'
             ),
             'plotBands' => array(
-                array('from' => 0, 'to' => 60, 'color' => '#DF5353'), //green
-                array('from' => 60, 'to' => 85, 'color' => '#E9F02B'), //red
-                array('from' => 85, 'to' => 100, 'color' => '#55BF3B'), //red
+                array('from' => 0, 'to' => 60, 'color' => '#DF5353'), //red
+                array('from' => 60, 'to' => 85, 'color' => '#E9F02B'), //yellow
+                array('from' => 85, 'to' => 100, 'color' => '#55BF3B'), //green
             )
         ),
         'plotOptions' => array(
