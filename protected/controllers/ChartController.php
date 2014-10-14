@@ -10,5 +10,9 @@ class ChartController extends Controller{
         $this->render('pie');
     }
     
+    public function actionLine(){
+        $this->render('multiline');
+    }
+    
     
 }
