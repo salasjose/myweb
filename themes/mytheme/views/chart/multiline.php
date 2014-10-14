@@ -13,7 +13,7 @@ $catagory = array('มค', 'กพ', 'มีค', 'เมย');
 
 $year1 = 'ปีงบ 2557';
 $data_year1 = array();
-array_push($data_year1, 10);
+array_push($data_year1, 10);// จำนวนครั้งการ push ต้องเท่ากับ member ของ $catagory
 array_push($data_year1, 11);
 array_push($data_year1, 10);
 array_push($data_year1, 15);
