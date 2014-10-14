@@ -11,7 +11,7 @@ $cs->registerScriptFile('http://code.highcharts.com/highcharts-more.js');
 // ข้อมูล กราฟ *** ควรจะทำที่ Controller
 $catagory = array('มค', 'กพ', 'มีค', 'เมย');
 
-$year1 = 'Aaaa';
+$year1 = 'ปีงบ 2557';
 $data_year1 = array();
 array_push($data_year1, 10);
 array_push($data_year1, 11);
@@ -19,7 +19,7 @@ array_push($data_year1, 10);
 array_push($data_year1, 15);
 
 
-$year2 = 'Bbbb';
+$year2 = 'ปีงบ 2558';
 $data_year2 = array();
 array_push($data_year2, 2);
 array_push($data_year2, 14);
