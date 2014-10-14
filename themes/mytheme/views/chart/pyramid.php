@@ -3,17 +3,17 @@
     // import highchart libray
     $cs = Yii::app()->getClientScript();
     $cs->registerScriptFile('http://code.highcharts.com/highcharts.js');
-    //$cs->registerScriptFile('http://code.highcharts.com/highcharts-more.js');
+    $cs->registerScriptFile('http://code.highcharts.com/highcharts-more.js');
     //end import
     // dynamic data template
     $agegroup = array('0-1ปี', '2-5ปี', '5-10ปี', '10ป๊+', 'aaa');
     $male = array(-40, -20, -10, -6, -8);
     $female = array(60, 20, 10, 6, 8);
-    
+
     //คำนวณค่า max , min 
-    $max_female =max($female);
+    $max_female = max($female);
     $max_male = abs(min($male));
-    $max = $max_female>$max_male?$max_female:$max_male;
+    $max = $max_female > $max_male ? $max_female : $max_male;
     //end data
 
     $this->widget('booster.widgets.TbHighCharts', array(
@@ -36,16 +36,14 @@
                     'labels' => array(
                         'step' => 0
                     ),
-                  
                 ),
-                
             ),
             'yAxis' => array(
                 'title' => array(
                     'text' => 'จำนวน'
                 ),
-                'min' => -1*($max)-10,
-                'max' => $max+10
+                'min' => -1 * ($max) - 10,
+                'max' => $max + 10
             ),
             'series' => array(array(
                     'name' => 'เพศชาย',

@@ -76,7 +76,7 @@ class TbHighCharts extends CWidget
 	{
 		$assets = Booster::getBooster()->cs;
 
-		$assets->registerPackage('highcharts');
+		//$assets->registerPackage('highcharts');
 
 		$baseUrl = $assets->packages['highcharts']['baseUrl'];
 
